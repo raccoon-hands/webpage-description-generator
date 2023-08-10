@@ -1,0 +1,15 @@
+07/31/23 - Added recovery function to write descriptions to csv file and print denied URLs
+         - URLs of resources which rely on JavaScript will now be considered "unscrapable" and added to denied URLs
+         - Fixed issue with the writing of denied_urls.csv
+         - Tweaked GPT prompts to further discourage salesman behaviour
+         - Rollover descriptions now must start with "This tool" or "This resource" to stop repetition of "This web page"
+         Anna B
+         
+         
+08/01/23 - Recovery function now recovers unscrapable URLs to denied_urls.csv
+         - PDF URLs will no longer crash the program
+         - Updated test cases to include PDF URLs & URLs with bad SSL certificates
+	 - Connection errors and pdf URLs will now cause the script to skip to the next URL without consuming GPT prompts.
+	 - Hitting a rate limit will now automatically execute the recovery function
+	 - Updated readme to reflect changes
+         Anna B
