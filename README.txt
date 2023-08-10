@@ -19,7 +19,8 @@ If you don't want to or can't do this then you can edit gpt_functions.py, line 6
 
 openai.api_key = 'your key here'
 
-But you'll need to keep that file confidential.
+But this is not recommended for security reasons, and you should keep your files confidential if you choose to
+do it this way.
 
 Tutorials on creating an environment variable for your key:
 https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
@@ -33,17 +34,16 @@ to be picked up by python.
    The csv file must contain the column "Tool URL" which contains the URLs.
    The csv file must contain the columns "Short Description", "Long Description", "Rollover Description".
 
-(The directory is named "webscraper")
 --------------------------------------------------------------------------------------------------------
 
 5. OPTIONAL There is a test.csv already in the directory. If you want to check that everything works before you
-start with your actual .csv, then you can run run_this_program.py and type test.csv when prompted. (no quotation marks)
+start with your actual file, then you can run run_this_program.py from IDLE and type test.csv when prompted. (no quotation marks)
 This should populate the long description, short description and rollover description columns of test.csv with
 appropriate description data, except for:
 
 https://en-gb.facebook.com/ - Usually cannot be scraped (very rarely it may succeed though)
 
-https://github.com/yaelwrites/Big-Ass-Data-Broker-Opt-Out-List - github pages cannot be accurately described by GPT
+https://github.com/yaelwrites/Big-Ass-Data-Broker-Opt-Out-List - github pages cannot be accurately described by this tool
 
 https://www.thinkuknow.co.uk/- bad SSL certificate, script should give an error message but continue to run.
 
@@ -59,10 +59,11 @@ This test should take about 7 minutes.
 1. Open the file run_this_program.py by editing it with IDLE. Then run it from IDLE by hitting F5 or selecting
 run > run module.
 2. When prompted, enter or paste the name of your csv file without quotation marks and hit enter.
+For example: my_file.csv
 
 What happens:
 3. The script will begin scraping data from the urls within the column "Tool URL" of the csv file.
-If the csv file already contains description data then the script will pick up where this ends.
+If the csv file already contains generated description data then the script will pick up where this ends.
 4. Three requests to generate a description will be made to Chat GPT.
 5. If the descriptions can be generated then they are shown to you and added to their relevant columns. 
    If not, the URL is added to denied_urls.csv.
@@ -74,8 +75,7 @@ IMPORTANT ISSUES:
 The descriptions won't always be perfect and may occasionally contain instances of ChatGPT "breaking character" or behaving
 like a salesman.
 
-GitHub tools, websites that rely on JavaScript, and websites that block scraping attempts will all be either innacurately described
-or not described at all, so they will be added to the denied_urls.csv.
+GitHub tools, websites that rely on JavaScript, and websites that block scraping attempts will all be either innacurately described or not described at all, so they will be added to the denied_urls.csv.
 
 There is a 200 request per day rate limit, so the tool can only generate descriptions for 66 tools per day.
 
