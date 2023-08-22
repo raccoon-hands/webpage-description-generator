@@ -142,7 +142,10 @@ for website in websites:
     iterator += 1
     end = time.perf_counter() #end the timer for this iteration
     elapsed = round(end - start)
-    naptime = 62 - elapsed #calculate time to back off for
+     if elapsed < 62:
+        naptime = 62 - elapsed #calculate time to back off for
+    else:
+        naptime = False
 
     #Detect websites that are down or cannot be scraped/ described.
     found_phrases = False
@@ -175,7 +178,7 @@ for website in websites:
     print(">>>>>>>>>", iterator, " out of", length, "websites complete.")
     print("Time elapsed:", elapsed, "seconds.")
     #Rate limit is 3 requests per min, so we need to back off until a minute has elapsed
-    if iterator < length:
+    if (iterator < length) and naptime:
         print("Cooling off for", naptime, "seconds...")
         time.sleep(naptime)
         print()
