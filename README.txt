@@ -68,7 +68,7 @@ If the csv file already contains generated description data then the script will
 5. If the descriptions can be generated then they are shown to you and added to their relevant columns. 
    If not, the URL is added to denied_urls.csv.
 6. The script will need to cool off between GPT requests to avoid hitting the rate limit for OpenAI's API.
-7. The script will inform you when it has written the changes to your .csv file and you can exit.
+7. The script will inform you when the process is complete and you can exit.
 8. If you hit the rate limit, the script will inform you and save your descriptions and unscrapable urls to their relevant csv files.
 
 IMPORTANT ISSUES: 
@@ -77,7 +77,8 @@ like a salesman.
 
 GitHub tools, websites that rely on JavaScript, and websites that block scraping attempts will all be either innacurately described or not described at all, so they will be added to the denied_urls.csv.
 
-There is a 200 request per day rate limit, so the tool can only generate descriptions for 66 tools per day.
+There is a 200 request per day rate limit, so the tool can only generate descriptions for 66 tools per day
+when using the free version of OpenAI's API.
 
 The .csv file is written once all descriptions are generated, so if an uncaught error occurs the descriptions generated
 so far will not yet be written to the csv file. To finish the process, execute the function:
