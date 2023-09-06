@@ -27,6 +27,11 @@ https://help.openai.com/en/articles/5112595-best-practices-for-api-key-safety
 
 Please note: You will need to restart IDLE or whatever editor you are using for the environment variable change
 to be picked up by python.
+
+IMPORTANT: You will need to select what type of account you use by changing the paid_account variable
+in gpt_functions.py. This will afect the rate limit and the program may not function if this variable
+is not set appropriately. If your account is paid, set it as True. If it's a free account, set it 
+to False.
 --------------------------------------------------------------------------------------------------------
 
 4. Place the .csv file you want to parse in the same directory as the .py files.
