@@ -1,8 +1,17 @@
 import os
 import openai
 
+"""The variables below are what you can edit for your API key and for your
+OpenAI account's API plan. If you have a paid account, set paid_account
+to True. Note that free trial users will probably be fine to
+set this as True as it is unlikely you will hit the 20RPM rate limit."""
+
 openai.api_key = os.environ['OPENAI_API_KEY']
 
+paid_account = False
+
+"""Please do not edit the following code unless you intend to make changes to
+the prompts"""
 MODEL = "gpt-3.5-turbo"
 
 def link_describe(text):

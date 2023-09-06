@@ -157,7 +157,7 @@ for website in websites:
     iterator += 1
     end = time.perf_counter() #end the timer for this iteration
     elapsed = round(end - start)
-    if elapsed < 62:
+    if (not gpt.paid_account) and elapsed < 62:
         naptime = 62 - elapsed #calculate time to back off for
     else:
         naptime = False
